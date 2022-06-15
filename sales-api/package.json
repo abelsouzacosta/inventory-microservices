@@ -20,5 +20,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.7.0"
+  },
+  "scripts": {
+    "start:dev": "nodemon app.mjs"
   }
 }
