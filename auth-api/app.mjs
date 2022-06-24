@@ -1,5 +1,6 @@
 import express from 'express';
 import createInitialData from './config/db/initialdata.mjs';
+import router from './modules/routes/user.routes.mjs';
 
 const app = express();
 
@@ -7,6 +8,8 @@ app.use(express.json());
 
 const { env } = process;
 const PORT = env.PORT || 8080;
+
+app.use('/users', router);
 
 app.get('/', (req, res) => res.redirect('/api/status'));
 
