@@ -1,4 +1,5 @@
 import express from 'express';
+import createInitialData from './config/db/initialdata.mjs';
 
 const app = express();
 
@@ -16,6 +17,24 @@ app.get('/api/status', (req, res) =>
     httpStatus: 200,
   }),
 );
+
+app.get('/init', async (req, res) => {
+  createInitialData()
+    .then(() => {
+      console.log(`Initial data of user was created`);
+
+      return res.json({
+        message: 'Initial Data of User was created',
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+
+      return res.json({
+        message: 'There was an error trying to create the initial data of user',
+      });
+    });
+});
 
 app.listen(PORT, () => console.info(`Server listening on port ${PORT}`));
 
