@@ -5,4 +5,6 @@ const router = Router();
 
 router.get('/', controller.list);
 
+router.post('/', controller.create);
+
 export default router;
