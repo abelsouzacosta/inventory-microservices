@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import createInitialData from './config/db/initialdata.mjs';
 import router from './modules/routes/user.routes.mjs';
+import errorHandler from './shared/infra/errors/ErrorHandler.mjs';
 
 const app = express();
 
@@ -11,6 +12,8 @@ const { env } = process;
 const PORT = env.PORT || 8080;
 
 app.use('/users', router);
+
+app.use(errorHandler);
 
 app.get('/', (req, res) => res.redirect('/api/status'));
 
