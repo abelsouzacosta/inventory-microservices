@@ -1,10 +1,11 @@
+import HttpStatus from '../../shared/infra/constants/server/HttpStatus.mjs';
 import service from '../services/UserService.mjs';
 
 class UserController {
   async list(req, res) {
     const users = await service.find();
 
-    return res.status(200).json(users);
+    return res.status(HttpStatus.OK).json(users);
   }
 
   async create(req, res) {
@@ -12,7 +13,7 @@ class UserController {
 
     const userCreated = await service.create(name, email, password);
 
-    return res.status(201).json(userCreated);
+    return res.status(HttpStatus.CREATED).json(userCreated);
   }
 }
 
