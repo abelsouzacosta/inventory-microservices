@@ -1,5 +1,5 @@
-import HttpStatus from '../../shared/infra/constants/server/HttpStatus.mjs';
-import service from '../services/UserService.mjs';
+import HttpStatus from '../../../shared/infra/constants/server/HttpStatus.mjs';
+import service from '../../services/UserService.mjs';
 
 class UserController {
   async list(req, res) {

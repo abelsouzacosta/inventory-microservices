@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import controller from '../controllers/UserController.mjs';
+import controller from '../controllers/users/UserController.mjs';
 import emailPipe from '../pipe/EmailAlreadyExistsPipe.mjs';
 
 const router = Router();
