@@ -1,4 +1,4 @@
-import ApplicationError from '../../errors/ApplicationError.mjs';
+import ApplicationError from '../../../errors/ApplicationError.mjs';
 
 // eslint-disable-next-line
 export default (error, req, res, next) => {
