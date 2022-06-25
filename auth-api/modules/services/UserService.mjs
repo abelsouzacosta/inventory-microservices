@@ -9,7 +9,7 @@ class UserService {
   generateToken(user) {
     const token = jsonwebtoken.sign({}, process.env.SECRET, {
       expiresIn: 86400,
-      subject: user.id,
+      subject: toString(user.id),
     });
 
     return token;
