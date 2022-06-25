@@ -1,4 +1,5 @@
 import ApplicationError from '../../../errors/ApplicationError.mjs';
+import HttpStatus from '../../constants/server/HttpStatus.mjs';
 
 // eslint-disable-next-line
 export default (error, req, res, next) => {
@@ -10,7 +11,7 @@ export default (error, req, res, next) => {
     });
   }
 
-  return res.status(500).json({
+  return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
     message: error.message,
   });
 };
