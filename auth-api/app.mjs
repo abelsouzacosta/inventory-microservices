@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 import createInitialData from './config/db/initialdata.mjs';
 import router from './modules/routes/user.routes.mjs';
 
