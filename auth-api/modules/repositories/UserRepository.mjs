@@ -7,6 +7,16 @@ class UserRepository {
     return users;
   }
 
+  async findByEmail(email) {
+    const user = await User.findOne({
+      where: {
+        email,
+      },
+    });
+
+    return user;
+  }
+
   async create(name, email, password) {
     const newUser = await User.create({
       name,
