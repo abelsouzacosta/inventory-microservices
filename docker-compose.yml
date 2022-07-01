@@ -38,3 +38,30 @@ services:
       - 5672:5672
       - 25676:25676
       - 15672:15672
+  auth-api:
+    container_name: auth-api
+    build: './auth-api'
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
+    depends_on:
+      - auth-db
+  product-api:
+    container_name: product-api
+    build: './products-api'
+    environment:
+      - PORT=3030
+    ports:
+      - 3030:3030
+    depends_on:
+      - product-db
+  sales-api:
+    container_name: sales-api
+    build: './sales-api'
+    environment:
+      - PORT=8083
+    ports:
+      - 8083:8083
+    depends_on:
+      - sales-db
