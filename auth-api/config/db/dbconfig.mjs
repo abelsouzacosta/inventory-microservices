@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 const sequelize = new Sequelize('auth_db', 'docker', 'docker', {
   dialect: 'postgres',
   database: 'auth-db',
-  host: 'localhost',
+  host: 'auth-db',
   quoteIdentifiers: true,
   define: {
     syncOnAssociation: true,
