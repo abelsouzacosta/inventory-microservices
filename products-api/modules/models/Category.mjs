@@ -3,7 +3,7 @@ import sequelize from '../../config/db/dbconfig.mjs';
 
 const Category = sequelize.define('category', {
   id: {
-    type: Sequelize.INT,
+    type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },

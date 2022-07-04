@@ -25,3 +25,5 @@ sequelize
     console.error(`Unable to connect the database product-db`);
     console.error(err);
   });
+
+export default sequelize;

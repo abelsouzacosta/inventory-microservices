@@ -1,7 +1,5 @@
 import Sequelize from 'sequelize';
 import sequelize from '../../config/db/dbconfig.mjs';
-import Category from './Category.mjs';
-import Supplier from './Supplier.mjs';
 
 const Product = sequelize.define('product', {
   id: {
@@ -19,9 +17,5 @@ const Product = sequelize.define('product', {
     unique: true,
   },
 });
-
-Product.hasOne(Supplier);
-
-Product.belongsTo(Category);
 
 export default Product;
