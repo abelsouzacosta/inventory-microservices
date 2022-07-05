@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN yarn
 COPY . .
 EXPOSE 3030
-CMD ["node", "app.mjs"]
+CMD ["npm", "run", "start:dev"]
