@@ -12,7 +12,7 @@ const sequelize = new Sequelize('product-db', 'docker', 'docker', {
     freezeTableName: true,
   },
   pool: {
-    acquire: 18000,
+    acquire: 60000,
   },
 });
 
