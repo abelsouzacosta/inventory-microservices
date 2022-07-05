@@ -1,6 +1,12 @@
 import repository from '../../repositories/CategoryRepository.mjs';
 
 class CategoryService {
+  async list() {
+    const categories = await repository.list();
+
+    return categories;
+  }
+
   async create(name) {
     const category = await repository.create(name);
 
