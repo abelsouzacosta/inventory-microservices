@@ -28,6 +28,12 @@ class CategoryRepository {
 
     return category;
   }
+
+  async delete(id) {
+    const category = await Category.findByPk(id);
+
+    await category.destroy();
+  }
 }
 
 export default new CategoryRepository();
