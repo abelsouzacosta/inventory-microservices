@@ -1,5 +1,9 @@
-import { Product, Category, Supplier } from '../../modules/models/index.mjs';
-import ProductCategory from '../../modules/models/ProductCategory.mjs';
+import {
+  Product,
+  Category,
+  Supplier,
+  ProductCategory,
+} from '../../modules/models/index.mjs';
 
 export default async function createInitialData() {
   await Supplier.sync({ force: true });
