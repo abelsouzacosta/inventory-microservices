@@ -31,6 +31,14 @@ class CategoryController {
 
     return res.status(201).json(category);
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    await service.delete(parseInt(id, 10));
+
+    return res.status(204).send();
+  }
 }
 
 export default new CategoryController();
