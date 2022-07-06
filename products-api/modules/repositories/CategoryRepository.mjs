@@ -20,6 +20,14 @@ class CategoryRepository {
 
     return category;
   }
+
+  async update(id, name) {
+    const category = await Category.findByPk(id);
+
+    await category.update({ name });
+
+    return category;
+  }
 }
 
 export default new CategoryRepository();

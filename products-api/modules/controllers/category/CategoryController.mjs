@@ -22,6 +22,15 @@ class CategoryController {
 
     return res.status(201).json(category);
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    const category = await service.update(parseInt(id, 10), name);
+
+    return res.status(201).json(category);
+  }
 }
 
 export default new CategoryController();

@@ -18,6 +18,12 @@ class CategoryService {
 
     return category;
   }
+
+  async update(id, name) {
+    const category = await repository.update(id, name);
+
+    return category;
+  }
 }
 
 export default new CategoryService();
