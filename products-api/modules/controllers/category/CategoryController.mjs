@@ -1,10 +1,11 @@
 import service from '../../services/category/CategoryService.mjs';
+import HttpStatus from '../../../shared/infra/constants/server/HttpStatus.mjs';
 
 class CategoryController {
   async list(req, res) {
     const categories = await service.list();
 
-    return res.status(200).json(categories);
+    return res.status(HttpStatus.OK).json(categories);
   }
 
   async getCategory(req, res) {
@@ -12,7 +13,7 @@ class CategoryController {
 
     const category = await service.getOneBy(parseInt(id, 10));
 
-    return res.status(200).json(category);
+    return res.status(HttpStatus.OK).json(category);
   }
 
   async create(req, res) {
@@ -20,7 +21,7 @@ class CategoryController {
 
     const category = await service.create(name);
 
-    return res.status(201).json(category);
+    return res.status(HttpStatus.CREATED).json(category);
   }
 
   async update(req, res) {
@@ -29,7 +30,7 @@ class CategoryController {
 
     const category = await service.update(parseInt(id, 10), name);
 
-    return res.status(201).json(category);
+    return res.status(HttpStatus.CREATED).json(category);
   }
 
   async delete(req, res) {
@@ -37,7 +38,7 @@ class CategoryController {
 
     await service.delete(parseInt(id, 10));
 
-    return res.status(204).send();
+    return res.status(HttpStatus.NO_CONTENT).send();
   }
 }
 
