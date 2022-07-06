@@ -7,6 +7,14 @@ class CategoryController {
     return res.status(200).json(categories);
   }
 
+  async getCategory(req, res) {
+    const { id } = req.params;
+
+    const category = await service.getOneBy(parseInt(id, 10));
+
+    return res.status(200).json(category);
+  }
+
   async create(req, res) {
     const { name } = req.body;
 

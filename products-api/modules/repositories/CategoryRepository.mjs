@@ -7,6 +7,12 @@ class CategoryRepository {
     return categories;
   }
 
+  async findById(id) {
+    const category = await Category.findByPk(id);
+
+    return category;
+  }
+
   async create(name) {
     const category = await Category.create({
       name,

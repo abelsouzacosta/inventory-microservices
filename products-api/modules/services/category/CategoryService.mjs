@@ -7,6 +7,12 @@ class CategoryService {
     return categories;
   }
 
+  async getOneBy(id) {
+    const category = await repository.findById(id);
+
+    return category;
+  }
+
   async create(name) {
     const category = await repository.create(name);
 
