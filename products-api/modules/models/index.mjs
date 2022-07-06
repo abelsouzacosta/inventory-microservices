@@ -1,6 +1,7 @@
 import Category from './Category.mjs';
 import Product from './Product.mjs';
 import Supplier from './Supplier.mjs';
+import ProductCategory from './ProductCategory.mjs';
 
 Category.belongsToMany(Product, {
   through: 'product_category',
@@ -20,4 +21,4 @@ Product.belongsToMany(Category, {
   foreignKey: 'product_id',
 });
 
-export { Product, Category, Supplier };
+export { Product, Category, Supplier, ProductCategory };
