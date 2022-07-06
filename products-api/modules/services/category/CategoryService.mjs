@@ -24,6 +24,10 @@ class CategoryService {
 
     return category;
   }
+
+  async delete(id) {
+    await repository.delete(id);
+  }
 }
 
 export default new CategoryService();
