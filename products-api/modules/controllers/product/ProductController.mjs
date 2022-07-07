@@ -7,6 +7,14 @@ class ProductController {
 
     return res.status(HttpStatus.OK).json(products);
   }
+
+  async create(req, res) {
+    const { name, ean, supplier_id } = req.body;
+
+    const product = await service.create(name, ean, supplier_id);
+
+    return res.status(HttpStatus.CREATED).json(product);
+  }
 }
 
 export default new ProductController();
