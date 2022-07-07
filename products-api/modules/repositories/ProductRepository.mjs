@@ -24,6 +24,14 @@ class ProductRepository {
 
     return product;
   }
+
+  async updateSupplier(id, supplier_id) {
+    const product = await Product.findByPk(id);
+
+    await product.update({ supplier_id });
+
+    return product;
+  }
 }
 
 export default new ProductRepository();
