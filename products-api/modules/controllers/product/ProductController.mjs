@@ -8,6 +8,14 @@ class ProductController {
     return res.status(HttpStatus.OK).json(products);
   }
 
+  async getProduct(req, res) {
+    const { id } = req.params;
+
+    const product = await service.getOneProduct(id);
+
+    return res.status(HttpStatus.OK).json(product);
+  }
+
   async create(req, res) {
     const { name, ean, supplier_id } = req.body;
 
