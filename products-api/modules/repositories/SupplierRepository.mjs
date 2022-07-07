@@ -7,6 +7,12 @@ class SupplierRepository {
     return suppliers;
   }
 
+  async findById(id) {
+    const supplier = await Supplier.findByPk(id);
+
+    return supplier;
+  }
+
   async create(name, phone) {
     const supplier = await Supplier.create({
       name,
