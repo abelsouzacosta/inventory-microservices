@@ -16,6 +16,10 @@ class SupplierService {
   async update(id, name, phone) {
     return repository.update(id, name, phone);
   }
+
+  async delete(id) {
+    return repository.delete(id);
+  }
 }
 
 export default new SupplierService();
