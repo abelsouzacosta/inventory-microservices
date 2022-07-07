@@ -15,6 +15,15 @@ class ProductController {
 
     return res.status(HttpStatus.CREATED).json(product);
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const { name, ean } = req.body;
+
+    const product = await service.update(id, name, ean);
+
+    return res.status(HttpStatus.CREATED).json(product);
+  }
 }
 
 export default new ProductController();
