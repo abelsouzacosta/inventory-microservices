@@ -29,6 +29,12 @@ class SupplierRepository {
 
     return supplier;
   }
+
+  async delete(id) {
+    const supplier = await Supplier.findByPk(id);
+
+    supplier.destroy();
+  }
 }
 
 export default new SupplierRepository();
