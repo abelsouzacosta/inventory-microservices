@@ -12,6 +12,10 @@ class ProductService {
   async update(id, name, ean) {
     return repository.update(id, name, ean);
   }
+
+  async updateSupplier(id, supplier_id) {
+    return repository.updateSupplier(id, supplier_id);
+  }
 }
 
 export default new ProductService();
