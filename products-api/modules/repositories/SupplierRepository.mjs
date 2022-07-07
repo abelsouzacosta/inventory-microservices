@@ -21,6 +21,17 @@ class SupplierRepository {
 
     return supplier;
   }
+
+  async update(id, name, phone) {
+    const supplier = await Supplier.findByPk(id);
+
+    supplier.name = name || supplier.name;
+    supplier.phone = phone || supplier.phone;
+
+    supplier.save();
+
+    return supplier;
+  }
 }
 
 export default new SupplierRepository();
