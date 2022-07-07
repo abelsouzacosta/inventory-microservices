@@ -7,6 +7,14 @@ class SupplierController {
 
     return res.status(HttpStatus.OK).json(suppliers);
   }
+
+  async create(req, res) {
+    const { name, phone } = req.body;
+
+    const supplier = await service.create(name, phone);
+
+    return res.status(HttpStatus.CREATED).json(supplier);
+  }
 }
 
 export default new SupplierController();
