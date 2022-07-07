@@ -5,6 +5,10 @@ class ProductService {
     return repository.list();
   }
 
+  async getOneProduct(id) {
+    return repository.findById(id);
+  }
+
   async create(name, ean, supplier_id) {
     return repository.create(name, ean, supplier_id);
   }
