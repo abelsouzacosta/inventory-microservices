@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import createInitialData from '../../config/db/initialdata.mjs';
 import categoryRouter from './category.routes.mjs';
+import supplierRouter from './supplier.routes.mjs';
 
 const router = Router();
 
@@ -33,5 +34,7 @@ router.get('/init', async (req, res) => {
 });
 
 router.use('/categories', categoryRouter);
+
+router.use('/suppliers', supplierRouter);
 
 export default router;
