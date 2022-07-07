@@ -25,10 +25,7 @@ class SupplierRepository {
   async update(id, name, phone) {
     const supplier = await Supplier.findByPk(id);
 
-    supplier.name = name || supplier.name;
-    supplier.phone = phone || supplier.phone;
-
-    supplier.save();
+    supplier.update({ name, phone });
 
     return supplier;
   }
