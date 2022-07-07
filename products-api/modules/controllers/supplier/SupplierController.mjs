@@ -23,6 +23,15 @@ class SupplierController {
 
     return res.status(HttpStatus.CREATED).json(supplier);
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const { name, phone } = req.body;
+
+    const supplier = await service.update(id, name, phone);
+
+    return res.status(HttpStatus.CREATED).json(supplier);
+  }
 }
 
 export default new SupplierController();
