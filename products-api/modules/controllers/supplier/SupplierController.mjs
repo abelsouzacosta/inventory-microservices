@@ -8,6 +8,14 @@ class SupplierController {
     return res.status(HttpStatus.OK).json(suppliers);
   }
 
+  async getSupplier(req, res) {
+    const { id } = req.params;
+
+    const supplier = await service.getOneBy(id);
+
+    return res.status(HttpStatus.OK).json(supplier);
+  }
+
   async create(req, res) {
     const { name, phone } = req.body;
 
