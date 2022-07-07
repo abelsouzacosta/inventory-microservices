@@ -1,6 +1,12 @@
 import { Product } from '../models/index.mjs';
 
 class ProductRepository {
+  async findById(id) {
+    const product = await Product.findByPk(id);
+
+    return product;
+  }
+
   async list() {
     const products = await Product.findAll();
 
@@ -18,7 +24,7 @@ class ProductRepository {
   }
 
   async update(id, name, ean) {
-    const product = await Product.findByPk(id);
+    const product = await this.findById(id);
 
     await product.update({ name, ean });
 
@@ -26,7 +32,7 @@ class ProductRepository {
   }
 
   async updateSupplier(id, supplier_id) {
-    const product = await Product.findByPk(id);
+    const product = await this.findById(id);
 
     await product.update({ supplier_id });
 
