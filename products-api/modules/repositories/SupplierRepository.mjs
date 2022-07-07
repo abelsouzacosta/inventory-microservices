@@ -6,6 +6,15 @@ class SupplierRepository {
 
     return suppliers;
   }
+
+  async create(name, phone) {
+    const supplier = await Supplier.create({
+      name,
+      phone,
+    });
+
+    return supplier;
+  }
 }
 
 export default new SupplierRepository();
