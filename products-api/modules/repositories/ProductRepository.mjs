@@ -6,6 +6,16 @@ class ProductRepository {
 
     return products;
   }
+
+  async create(name, ean, supplier_id) {
+    const product = await Product.create({
+      name,
+      ean,
+      supplier_id,
+    });
+
+    return product;
+  }
 }
 
 export default new ProductRepository();
