@@ -24,6 +24,15 @@ class ProductController {
 
     return res.status(HttpStatus.CREATED).json(product);
   }
+
+  async updateSupplier(req, res) {
+    const { id } = req.params;
+    const { supplier_id } = req.body;
+
+    const product = await service.updateSupplier(id, supplier_id);
+
+    return res.status(HttpStatus.CREATED).json(product);
+  }
 }
 
 export default new ProductController();
