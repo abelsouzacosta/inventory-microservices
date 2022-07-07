@@ -3,6 +3,8 @@ import controller from '../controllers/supplier/SupplierController.mjs';
 
 const router = Router();
 
+router.get('/:id', controller.getSupplier);
+
 router.get('/', controller.list);
 
 router.post('/', controller.create);
