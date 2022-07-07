@@ -5,6 +5,10 @@ class SupplierService {
     return repository.list();
   }
 
+  async getOneBy(id) {
+    return repository.findById(id);
+  }
+
   async create(name, phone) {
     return repository.create(name, phone);
   }
