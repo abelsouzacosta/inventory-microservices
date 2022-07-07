@@ -5,6 +5,8 @@ const router = Router();
 
 router.get('/', controller.list);
 
+router.get('/:id', controller.getProduct);
+
 router.post('/', controller.create);
 
 router.put('/:id', controller.update);
