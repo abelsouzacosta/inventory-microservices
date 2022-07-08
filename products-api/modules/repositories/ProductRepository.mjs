@@ -38,6 +38,12 @@ class ProductRepository {
 
     return product;
   }
+
+  async delete(id) {
+    const product = await this.findById(id);
+
+    await product.destroy();
+  }
 }
 
 export default new ProductRepository();
