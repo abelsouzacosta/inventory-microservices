@@ -4,7 +4,7 @@ import ApplicationError from '../../../shared/errors/ApplicationError.mjs';
 
 class SupplierNotFoundPipe {
   async execute(req, res, next) {
-    const { id } = req.params;
+    const id = req.params.id ? req.params.id : req.body.supplier_id;
 
     const supplierExists = await repository.findById(id);
 
