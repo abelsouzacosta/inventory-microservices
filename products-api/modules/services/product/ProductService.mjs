@@ -20,6 +20,10 @@ class ProductService {
   async updateSupplier(id, supplier_id) {
     return repository.updateSupplier(id, supplier_id);
   }
+
+  async delete(id) {
+    return repository.delete(id);
+  }
 }
 
 export default new ProductService();
