@@ -6,6 +6,8 @@ import ProductCategory from './ProductCategory.mjs';
 Category.belongsToMany(Product, {
   through: 'product_category',
   foreignKey: 'category_id',
+  onDelete: 'SET NULL',
+  onUpdate: 'SET NULL',
 });
 
 Supplier.hasMany(Product, {
@@ -19,6 +21,8 @@ Product.belongsTo(Supplier, {
 Product.belongsToMany(Category, {
   through: 'product_category',
   foreignKey: 'product_id',
+  onDelete: 'SET NULL',
+  onUpdate: 'SET NULL',
 });
 
 export { Product, Category, Supplier, ProductCategory };
