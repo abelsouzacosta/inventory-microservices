@@ -41,6 +41,14 @@ class ProductController {
 
     return res.status(HttpStatus.CREATED).json(product);
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    await service.delete(id);
+
+    return res.status(HttpStatus.NO_CONTENT).send();
+  }
 }
 
 export default new ProductController();
