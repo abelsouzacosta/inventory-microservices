@@ -7,6 +7,16 @@ class ProductRepository {
     return product;
   }
 
+  async findByEan(ean) {
+    const product = await Product.findOne({
+      where: {
+        ean,
+      },
+    });
+
+    return product;
+  }
+
   async list() {
     const products = await Product.findAll();
 
