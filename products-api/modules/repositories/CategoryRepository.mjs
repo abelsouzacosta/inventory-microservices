@@ -1,3 +1,4 @@
+import logger from '../../shared/infra/logger/logger.mjs';
 import Category from '../models/Category.mjs';
 
 class CategoryRepository {
@@ -18,6 +19,8 @@ class CategoryRepository {
       name,
     });
 
+    logger.log('info', `category created sucessfully with id ${category.id}`);
+
     return category;
   }
 
@@ -26,6 +29,8 @@ class CategoryRepository {
 
     await category.update({ name });
 
+    logger.log('info', `category ${id} updated sucessfully`);
+
     return category;
   }
 
@@ -33,6 +38,8 @@ class CategoryRepository {
     const category = await Category.findByPk(id);
 
     await category.destroy();
+
+    logger.log('info', `category deleted sucessfully`);
   }
 }
 
