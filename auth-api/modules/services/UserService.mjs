@@ -3,9 +3,12 @@ import jsonwebtoken from 'jsonwebtoken';
 import repository from '../repositories/UserRepository.mjs';
 import ApplicationError from '../../shared/errors/ApplicationError.mjs';
 import HttpStatus from '../../shared/infra/constants/server/HttpStatus.mjs';
+import logger from '../../shared/infra/logger/Logger.mjs';
 import 'dotenv/config';
 
 class UserService {
+  #saltNumber = 10;
+
   generateToken(user) {
     const token = jsonwebtoken.sign({}, process.env.SECRET, {
       expiresIn: 86400,
@@ -15,18 +18,33 @@ class UserService {
     return token;
   }
 
+  validatePassword(user, password) {
+    const isValidPassword = compare(password, user.password);
+
+    if (!isValidPassword)
+      throw new ApplicationError(`Invalid Password`, HttpStatus.UNAUTHORIZED);
+  }
+
+  async generateHashedPassword(password) {
+    const hashedPassword = await hash(password, this.#saltNumber);
+
+    return hashedPassword;
+  }
+
   async find() {
     const users = repository.find();
+
+    logger.info(`getting users`);
 
     return users;
   }
 
   async create(name, email, password) {
-    const saltNumber = 10;
-
-    const hashedPassword = await hash(password, saltNumber);
+    const hashedPassword = await this.generateHashedPassword(password);
 
     const user = await repository.create(name, email, hashedPassword);
+
+    logger.info(`creating user`);
 
     return user;
   }
@@ -34,12 +52,11 @@ class UserService {
   async authorizeUser(email, password) {
     const user = await repository.findByEmail(email);
 
-    const isValidPassword = compare(password, user.password);
-
-    if (!isValidPassword)
-      throw new ApplicationError(`Invalid Password`, HttpStatus.UNAUTHORIZED);
+    this.validatePassword(user, password);
 
     const generatedToken = this.generateToken(user);
+
+    logger.info(`user authorized, token generated`);
 
     return generatedToken;
   }
