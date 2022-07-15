@@ -1,3 +1,4 @@
+import logger from '../../shared/infra/logger/logger.mjs';
 import { Supplier } from '../models/index.mjs';
 
 class SupplierRepository {
@@ -19,6 +20,8 @@ class SupplierRepository {
       phone,
     });
 
+    logger.info(`created a new supplier ${supplier.id}`);
+
     return supplier;
   }
 
@@ -27,11 +30,15 @@ class SupplierRepository {
 
     supplier.update({ name, phone });
 
+    logger.info(`updated supplier ${id}`);
+
     return supplier;
   }
 
   async delete(id) {
     const supplier = await Supplier.findByPk(id);
+
+    logger.info(`deleted supplier ${id}`);
 
     supplier.destroy();
   }
