@@ -10,7 +10,7 @@ class CategoryNotFoundPipe {
     const category = await repository.findById(parseInt(id, 10));
 
     if (!category) {
-      logger.log('error', `any category was found with id: ${id}`);
+      logger.error(`category ${id} was not found`);
 
       throw new ApplicationError(
         `Any category was found with id: ${id}`,

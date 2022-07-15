@@ -19,7 +19,7 @@ class CategoryRepository {
       name,
     });
 
-    logger.log('info', `category created sucessfully with id ${category.id}`);
+    logger.info(`creating new category ${category.id}`);
 
     return category;
   }
@@ -29,7 +29,7 @@ class CategoryRepository {
 
     await category.update({ name });
 
-    logger.log('info', `category ${id} updated sucessfully`);
+    logger.info(`updating category ${id}`);
 
     return category;
   }
@@ -39,7 +39,7 @@ class CategoryRepository {
 
     await category.destroy();
 
-    logger.log('info', `category deleted sucessfully`);
+    logger.info(`category deleted sucessfully`);
   }
 }
 

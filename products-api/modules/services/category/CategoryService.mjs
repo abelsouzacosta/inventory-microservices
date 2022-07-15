@@ -5,7 +5,7 @@ class CategoryService {
   async list() {
     const categories = await repository.list();
 
-    logger.log('info', 'getting all categories');
+    logger.info(`getting all categories`);
 
     return categories;
   }
@@ -13,7 +13,7 @@ class CategoryService {
   async getOneBy(id) {
     const category = await repository.findById(id);
 
-    logger.log('info', `getting category with id: ${id}`);
+    logger.info(`getting category ${id}`);
 
     return category;
   }
@@ -21,7 +21,7 @@ class CategoryService {
   async create(name) {
     const category = await repository.create(name);
 
-    logger.log('info', `trying to create new category`);
+    logger.info(`creating category`);
 
     return category;
   }
@@ -29,7 +29,7 @@ class CategoryService {
   async update(id, name) {
     const category = await repository.update(id, name);
 
-    logger.log('info', `trying to update category ${id}`);
+    logger.info(`updated category ${id}`);
 
     return category;
   }
@@ -37,7 +37,7 @@ class CategoryService {
   async delete(id) {
     await repository.delete(id);
 
-    logger.log('info', `tryning to delete category ${id}`);
+    logger.info(`deleted category ${id}`);
   }
 }
 
