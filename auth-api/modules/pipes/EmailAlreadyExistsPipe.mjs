@@ -1,6 +1,7 @@
 import repository from '../repositories/UserRepository.mjs';
 import ApplicationError from '../../shared/errors/ApplicationError.mjs';
 import HttpStatus from '../../shared/infra/constants/server/HttpStatus.mjs';
+import logger from '../../shared/infra/logger/Logger.mjs';
 
 class EmailAlreadyExistsPipe {
   async execute(req, res, next) {
@@ -8,8 +9,11 @@ class EmailAlreadyExistsPipe {
 
     const emailAlreadyExists = await repository.findByEmail(email);
 
-    if (emailAlreadyExists)
+    if (emailAlreadyExists) {
+      logger.error(`email already takne by another instance`);
+
       throw new ApplicationError(`Email already taken`, HttpStatus.CONFLICT);
+    }
 
     return next();
   }
