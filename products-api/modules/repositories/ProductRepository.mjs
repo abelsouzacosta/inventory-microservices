@@ -1,3 +1,4 @@
+import logger from '../../shared/infra/logger/logger.mjs';
 import { Product } from '../models/index.mjs';
 
 class ProductRepository {
@@ -30,6 +31,8 @@ class ProductRepository {
       supplier_id,
     });
 
+    logger.info(`creating new product ${product.id}`);
+
     return product;
   }
 
@@ -37,6 +40,8 @@ class ProductRepository {
     const product = await this.findById(id);
 
     await product.update({ name, ean });
+
+    logger.info(`updating product ${id}`);
 
     return product;
   }
@@ -46,11 +51,15 @@ class ProductRepository {
 
     await product.update({ supplier_id });
 
+    logger.info(`update product supplier to ${supplier_id}`);
+
     return product;
   }
 
   async delete(id) {
     const product = await this.findById(id);
+
+    logger.info(`delete product ${id}`);
 
     await product.destroy();
   }
