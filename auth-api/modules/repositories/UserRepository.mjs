@@ -1,4 +1,5 @@
 import User from '../models/user/User.mjs';
+import logger from '../../shared/infra/logger/Logger.mjs';
 
 class UserRepository {
   async find() {
@@ -23,6 +24,8 @@ class UserRepository {
       email,
       password,
     });
+
+    logger.info(`created user`);
 
     return newUser;
   }
