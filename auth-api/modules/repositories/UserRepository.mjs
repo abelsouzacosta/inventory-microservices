@@ -28,7 +28,7 @@ class UserRepository {
 
     logger.info(`created user`);
 
-    return newUser;
+    return { id: newUser.id, name: newUser.name, email: newUser.email };
   }
 }
 
