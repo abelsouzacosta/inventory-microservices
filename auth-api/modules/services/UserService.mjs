@@ -20,7 +20,7 @@ class UserService {
     return token;
   }
 
-  validatePassword(user, password) {
+  checkIfPasswordIsValid(user, password) {
     const isValidPassword = compare(password, user.password);
 
     if (!isValidPassword)
@@ -54,7 +54,7 @@ class UserService {
   async authorizeUser(email, password) {
     const user = await repository.findByEmail(email);
 
-    this.validatePassword(user, password);
+    this.checkIfPasswordIsValid(user, password);
 
     const generatedToken = this.generateToken(user);
 
