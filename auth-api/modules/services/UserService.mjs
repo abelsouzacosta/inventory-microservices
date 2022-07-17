@@ -20,11 +20,23 @@ class UserService {
     return token;
   }
 
-  checkIfPasswordIsValid(user, password) {
-    const isValidPassword = compare(password, user.password);
+  verifyUndefinedOrNullPassword(password) {
+    if (password === null || undefined)
+      throw new ApplicationError(`User not found`, HttpStatus.FORBIDDEN);
+  }
 
-    if (!isValidPassword)
+  comparePasswordWithHash(user, password) {
+    const hashedPassword = user.password;
+
+    const passowordIsValid = compare(password, hashedPassword);
+
+    if (!passowordIsValid)
       throw new ApplicationError(`Invalid Password`, HttpStatus.UNAUTHORIZED);
+  }
+
+  checkIfPasswordIsValid(user, password) {
+    this.verifyUndefinedOrNullPassword(password);
+    this.comparePasswordWithHash(user, password);
   }
 
   async generateHashedPassword(password) {
