@@ -13,6 +13,7 @@ class UserRepository {
       where: {
         email,
       },
+      attributes: ['email', 'password'],
     });
 
     return user;
