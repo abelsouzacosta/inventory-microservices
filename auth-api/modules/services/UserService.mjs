@@ -9,9 +9,11 @@ import 'dotenv/config';
 class UserService {
   #saltNumber = 10;
 
+  #tokenExpirationTimeInSeconds = 86400;
+
   generateToken(user) {
     const token = jsonwebtoken.sign({}, process.env.SECRET, {
-      expiresIn: 86400,
+      expiresIn: this.#tokenExpirationTimeInSeconds,
       subject: toString(user.id),
     });
 
