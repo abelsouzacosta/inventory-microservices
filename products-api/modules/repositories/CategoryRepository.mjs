@@ -14,6 +14,16 @@ class CategoryRepository {
     return category;
   }
 
+  async findByName(name) {
+    const category = await Category.findOne({
+      where: {
+        name,
+      },
+    });
+
+    return category;
+  }
+
   async create(name) {
     const category = await Category.create({
       name,
