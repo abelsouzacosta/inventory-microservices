@@ -1,20 +1,26 @@
 import { Sequelize } from 'sequelize';
+import 'dotenv/config';
 
-const sequelize = new Sequelize('product-db', 'docker', 'docker', {
-  dialect: 'postgres',
-  host: 'product-db',
-  database: 'product-db',
-  quoteIdentifiers: true,
-  define: {
-    syncOnAssociation: true,
-    timestamps: false,
-    underscored: true,
-    freezeTableName: true,
+const sequelize = new Sequelize(
+  process.env.POSTGRES_DATABASE,
+  process.env.POSTGRES_USER,
+  process.env.POSTGRES_PASSWORD,
+  {
+    dialect: process.env.DIALECT,
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DATABASE,
+    quoteIdentifiers: true,
+    define: {
+      syncOnAssociation: true,
+      timestamps: false,
+      underscored: true,
+      freezeTableName: true,
+    },
+    pool: {
+      acquire: 60000,
+    },
   },
-  pool: {
-    acquire: 60000,
-  },
-});
+);
 
 sequelize
   .authenticate()
