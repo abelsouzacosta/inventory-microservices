@@ -1,26 +1,23 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config';
 
-const sequelize = new Sequelize(
-  process.env.POSTGRES_DATABASE,
-  process.env.POSTGRES_USER,
-  process.env.POSTGRES_PASSWORD,
-  {
-    dialect: process.env.DIALECT,
-    host: process.env.POSTGRES_HOST,
-    database: process.env.POSTGRES_DATABASE,
-    quoteIdentifiers: true,
-    define: {
-      syncOnAssociation: true,
-      timestamps: false,
-      underscored: true,
-      freezeTableName: true,
-    },
-    pool: {
-      acquire: 60000,
-    },
+const sequelize = new Sequelize({
+  dialect: process.env.DIALECT,
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DATABASE,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  quoteIdentifiers: true,
+  define: {
+    syncOnAssociation: true,
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
   },
-);
+  pool: {
+    acquire: 60000,
+  },
+});
 
 sequelize
   .authenticate()
